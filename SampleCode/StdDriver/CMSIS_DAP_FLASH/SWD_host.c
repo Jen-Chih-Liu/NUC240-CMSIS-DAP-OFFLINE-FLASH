@@ -316,7 +316,7 @@ static uint8_t swd_read_block(uint32_t address, uint8_t *data, uint32_t size)
 }
 
 // Read target memory.
-static uint8_t swd_read_data(uint32_t addr, uint32_t *val)
+uint8_t swd_read_data(uint32_t addr, uint32_t *val)
 {
     uint8_t tmp_in[4];
     uint8_t tmp_out[4];

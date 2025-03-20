@@ -12,17 +12,17 @@
 #include "NUC230_240.h"
 #include "SWD_host.h"
 #include "SWD_flash.h"
-#include "algo/M031_AP_32.c"
-
+#include "algo/M2003_AP_32.c"
+extern  uint8_t swd_read_data(uint32_t addr, uint32_t *val);
 uint32_t Flash_Page_Size = 512;
-uint32_t Flash_Start_Addr = 0x08000000;
+uint32_t Flash_Start_Addr = 0x0000000;
 
 uint8_t demo_code[1024];
 
 uint8_t buff[512] = {0};
 
 #define PLL_CLOCK           72000000
-
+uint32_t PDID;
 
 void SYS_Init(void)
 {
@@ -101,7 +101,8 @@ int main(void)
 
     printf("\n\nCPU @ %d Hz\n", SystemCoreClock);
   swd_init_debug();
-	
+	swd_read_data(0x40000000, &PDID);
+	printf("target chip 0x%x\n\r",PDID);
 	target_flash_init(Flash_Start_Addr);
 	
 	for(uint32_t addr = 0; addr < sizeof(demo_code); addr += Flash_Page_Size)
@@ -109,6 +110,11 @@ int main(void)
 		target_flash_erase_sector(addr);
 	}
 	
+	 if (target_flash_uninit() != ERROR_SUCCESS)
+    {
+        return 0;
+    }
+		target_flash_init(Flash_Start_Addr);
 	for(uint32_t addr = 0; addr < sizeof(demo_code); addr += Flash_Page_Size)
 	{
 		swd_read_memory(addr, buff, Flash_Page_Size);
@@ -129,7 +135,12 @@ int main(void)
 		printf("%02X ", buff[i]);
 		printf("\r\n\r\n\r\n");
 	}
-	
+	 if (target_flash_uninit() != ERROR_SUCCESS)
+    {
+        return 0;
+    }
+
+
 	//swd_set_target_state_hw(RUN);
 
     while(1);

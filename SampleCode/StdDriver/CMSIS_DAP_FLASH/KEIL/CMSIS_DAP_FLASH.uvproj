@@ -7,10 +7,10 @@
 
   <Targets>
     <Target>
-      <TargetName>GPIO_OutputInput</TargetName>
+      <TargetName>CMSIS_DAP_FLASH</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
-      <pCCUsed>5060750::V5.06 update 6 (build 750)::ARMCC</pCCUsed>
+      <pCCUsed>5060960::V5.06 update 7 (build 960)::.\ARM_Compiler_5.06u7</pCCUsed>
       <uAC6>0</uAC6>
       <TargetOption>
         <TargetCommonOption>
@@ -47,7 +47,7 @@
             <InvalidFlash>1</InvalidFlash>
           </TargetStatus>
           <OutputDirectory>.\obj\</OutputDirectory>
-          <OutputName>GPIO_OutputInput</OutputName>
+          <OutputName>CMSIS_DAP_FLASH</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
           <CreateHexFile>0</CreateHexFile>
@@ -149,7 +149,7 @@
             <RestoreSysVw>1</RestoreSysVw>
           </Target>
           <RunDebugAfterBuild>0</RunDebugAfterBuild>
-          <TargetSelection>9</TargetSelection>
+          <TargetSelection>7</TargetSelection>
           <SimDlls>
             <CpuDll></CpuDll>
             <CpuDllArguments></CpuDllArguments>
@@ -224,6 +224,8 @@
             <uocXRam>0</uocXRam>
             <RvdsVP>0</RvdsVP>
             <RvdsMve>0</RvdsMve>
+            <RvdsCdeCp>0</RvdsCdeCp>
+            <nBranchProt>0</nBranchProt>
             <hadIRAM2>0</hadIRAM2>
             <hadIROM2>0</hadIROM2>
             <StupSel>0</StupSel>
@@ -377,7 +379,7 @@
               <MiscControls>--c99</MiscControls>
               <Define>DEBUG_ENABLE_SEMIHOST</Define>
               <Undefine></Undefine>
-              <IncludePath>..\..\..\..\Library\Device\Nuvoton\NUC230_240\Include;..\..\..\..\Library\CMSIS\Include;..\..\..\..\Library\StdDriver\inc;..\DAP;..\..\GPIO_OutputInput</IncludePath>
+              <IncludePath>..\..\..\..\Library\Device\Nuvoton\NUC230_240\Include;..\..\..\..\Library\CMSIS\Include;..\..\..\..\Library\StdDriver\inc;..\DAP;..\..\CMSIS_DAP_FLASH</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -390,7 +392,7 @@
             <NoWarn>0</NoWarn>
             <uSurpInc>0</uSurpInc>
             <useXO>0</useXO>
-            <uClangAs>0</uClangAs>
+            <ClangAsOpt>4</ClangAsOpt>
             <VariousControls>
               <MiscControls></MiscControls>
               <Define>DEBUG_ENABLE_SEMIHOST</Define>
